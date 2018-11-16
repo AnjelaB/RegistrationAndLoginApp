@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="Registration.Views.Login"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Registration.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="280" d:DesignWidth="600">
+    <Grid Background="#d6f5f5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="2" Grid.Column="1" Background="#ebfafa" Margin="10 0 0 0" FontSize="20">Login</TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="1" Background="#ebfafa" Margin="10 0 0 0" FontSize="20">Password</TextBlock>
+
+        <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Path=Login,Mode=TwoWay}" Height="28" FontSize="18"></TextBox>
+        <PasswordBox Grid.Row="3" Grid.Column="2" Name="password" PasswordChanged="PasswordBox_PasswordChanged" Height="28" FontSize="18"></PasswordBox>
+        <Button Grid.Row="4" Grid.Column="2" Command="{Binding Path=LoginCommand}" Background="#c2d6d6">
+            <TextBlock FontSize="20" FontWeight="Black">Log In</TextBlock>
+        </Button>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="2">
+
+            <TextBlock Name="statusMessage" Height="35" Visibility = "{Binding Path=StatusVisibility,Mode=TwoWay}" HorizontalAlignment="Center" Text="{Binding Path=ErrorMessage,Mode=TwoWay}"></TextBlock>
+
+            <TextBlock Name="retryConnectTextBlock" Visibility="{Binding Path=RetryConnectTextBlock,Mode=TwoWay}" HorizontalAlignment="Center">
+                    
+                    <Hyperlink Name="retryConnect" Command="{Binding Path=RetryConnectCommand}" FontSize="14" FontStyle="Normal">Retry connect</Hyperlink>
+
+            </TextBlock>
+
+            <TextBlock  HorizontalAlignment="Center">
+                    
+                    <Hyperlink  Click="Registration_Click" FontSize="14" FontStyle="Normal">Are you not registered yet?</Hyperlink>
+
+            </TextBlock>
+
+        </StackPanel>
+    </Grid>
+</UserControl>
